@@ -1,24 +1,22 @@
 package org.zooquarkus.persistence.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import io.quarkus.mongodb.panache.common.MongoEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
-@Getter
-@Setter
-@Table(name = "person")
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+// Active record pattern
+@EqualsAndHashCode(callSuper = true)
+@Data
+@MongoEntity(collection = "people")
+public class Person extends PanacheMongoEntity {
     private UUID id;
-
     private String forename;
     private String surname;
+    @BsonProperty("birth")
+    private LocalDate birthDate;
 }
