@@ -157,10 +157,12 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-mongodb-panache</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-liquibase-mongodb</artifactId>
     </dependency>
+    -->
   </dependencies>
   <build>
     <plugins>
